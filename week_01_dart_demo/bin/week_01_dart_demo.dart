@@ -1,5 +1,6 @@
 import 'dart:io';
-// import 'package:week_01_dart_demo/week_01_dart_demo.dart';
+import 'package:week_01_dart_demo/person.dart';
+import 'package:week_01_dart_demo/week_01_dart_demo.dart';
 
 void main(List<String> arguments) {
   // Initialized variables do not require type
@@ -9,11 +10,12 @@ void main(List<String> arguments) {
   String name;
   int age;
 
-  stdout.write('Enter your name: ');
-  name = stdin.readLineSync()!;
+  name = prompt('Enter your name: ');
 
-  stdout.write('Enter your age: ');
-  age = int.parse(stdin.readLineSync()!);
+  // TODO: use the promptInt function for the age
+  age = int.parse(prompt('Enter your age: '));
 
-  stdout.writeln('Hello $name, it looks like you are $age years old.');
+  final p = Person(name, age);
+
+  stdout.writeln('Hello ${p.name}, it looks like you are ${p.age} years old.');
 }
