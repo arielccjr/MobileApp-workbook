@@ -1,11 +1,13 @@
-//import 'package:week_02_async_dart/week_02_async_dart.dart' as week_02_async_dart;
-import 'dart:convert';
-import 'package:http/http.dart' as http;
+import 'package:week_02_async_dart/week_02_async_dart.dart';
 
 void main(List<String> arguments) async {
-  final res =
-      await http.get(Uri.parse('https://dog.ceo/api/breeds/image/random'));
-  final data = jsonDecode(res.body);
+  const dogUrl = 'https://dog.ceo/api/breeds/image/random';
+  var dogData = await getJson(dogUrl);
 
-  print(data['message']);
+  print(dogData['message']);
+
+  const allDogsUrl = 'https://dog.ceo/api/breeds/list/all';
+  dogData = await getJson(allDogsUrl);
+
+  print(dogData['message']['bulldog'][0]);
 }
