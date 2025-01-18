@@ -14,17 +14,28 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Profile'),
+          title: const Text('Profile - A Demo App'),
         ),
-        body: const Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Text(
-                'You have pushed the button this many times:',
+        body: Column(
+          children: <Widget>[
+            const Padding(
+              padding: EdgeInsets.all(16.0),
+              child: Text(
+                'Employee Profile',
+                style: TextStyle(
+                  fontSize: 24.0,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
-            ],
-          ),
+            ),
+            ClipOval(
+              child: Image.asset(
+                'images/me.jpg',
+                width: 200.0,
+                height: 200.0,
+              ),
+            ),
+          ],
         ),
       ),
     );
