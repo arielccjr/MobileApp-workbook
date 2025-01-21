@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:week_02_profile_demo/widgets/page_heading.dart';
+import 'package:week_02_profile_demo/widgets/profile_detail.dart';
 import 'package:week_02_profile_demo/widgets/profile_image.dart';
 
 void main() {
@@ -24,24 +25,9 @@ class MyApp extends StatelessWidget {
             ProfileImage(imagePath: 'assets/images/me.jpg'),
             // TODO: create a ProfileDetail(label: 'Name', value: 'Jane Doe')
             // Once complete, replace the following Rows with the new widget
-            Row(
-              children: [
-                Text('Name:'),
-                Text('Nate'),
-              ],
-            ),
-            Row(
-              children: [
-                Text('Position:'),
-                Text('Instructor'),
-              ],
-            ),
-            Row(
-              children: [
-                Text('Reports to:'),
-                Text('Jane'),
-              ],
-            ),
+            ProfileDetail(label: 'Name', value: 'Nathan'),
+            ProfileDetail(label: 'Position', value: 'Instructor'),
+            ProfileDetail(label: 'Reports to', value: 'Steve'),
           ],
         ),
       ),
