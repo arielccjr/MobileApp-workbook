@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:week_02_profile_demo/widgets/page_heading.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,22 +19,19 @@ class MyApp extends StatelessWidget {
         ),
         body: Column(
           children: <Widget>[
-            const Padding(
-              padding: EdgeInsets.all(16.0),
-              child: Text(
-                'Employee Profile',
-                style: TextStyle(
-                  fontSize: 24.0,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
+            const PageHeading(title: 'Employee Profile'),
             ClipOval(
               child: Image.asset(
                 'images/me.jpg',
                 width: 200.0,
                 height: 200.0,
               ),
+            ),
+            const Row(
+              children: [
+                Text('Row El 1'),
+                Text('Row El 2'),
+              ],
             ),
           ],
         ),
