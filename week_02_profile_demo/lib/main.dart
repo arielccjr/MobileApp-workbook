@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    const themeSwatch = Colors.red;
+    const themeSwatch = Colors.blue;
 
     final colorScheme = ColorScheme.fromSeed(
       seedColor: themeSwatch,
@@ -25,6 +25,21 @@ class MyApp extends StatelessWidget {
     final textColor = colorScheme.primary;
 
     return MaterialApp(
+      theme: ThemeData(
+        colorScheme: colorScheme,
+        textTheme: Theme.of(context).textTheme.apply(
+              bodyColor: textColor,
+              displayColor: textColor,
+            ),
+        appBarTheme: AppBarTheme(
+          backgroundColor: colorScheme.primary,
+          foregroundColor: colorScheme.onPrimary,
+          titleTextStyle: TextStyle(
+            fontSize: 24.0,
+            color: colorScheme.onPrimary,
+          ),
+        ),
+      ),
       title: 'Flutter Demo',
       home: Scaffold(
         appBar: AppBar(
