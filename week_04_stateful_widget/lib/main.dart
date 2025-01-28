@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:week_04_stateful_widget/widgets/raondom_dog.dart';
+import 'package:week_04_stateful_widget/widgets/random_dog.dart';
 
 void main() {
   runApp(const MainApp());
@@ -10,7 +10,7 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       home: Scaffold(
         body: Center(
           child: RandomDog(),
