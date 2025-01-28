@@ -1,3 +1,5 @@
+import 'dart:convert';
+import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 
 class RandomDog extends StatefulWidget {
@@ -8,19 +10,38 @@ class RandomDog extends StatefulWidget {
 }
 
 class _RandomDogState extends State<RandomDog> {
-  var imgUrl = 'https://images.dog.ceo/breeds/gaddi-indian/Gaddi.jpg';
+  var imgUrl = '';
+
+  Future<String> getDogImage() async {
+    var dogApiUrl = 'https://dog.ceo/api/breeds/image/random';
+    final res = await http.get(Uri.parse(dogApiUrl));
+    final data = jsonDecode(res.body)['message'];
+    return data;
+  }
+
+  @override
+  void initState() {
+    getDogImage().then((dogMessage) {
+      setState(() {
+        imgUrl = dogMessage;
+      });
+    });
+
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Image.network(imgUrl),
+        imgUrl != '' ? Image.network(imgUrl) : const Text('Loading image...'),
         ElevatedButton(
-          onPressed: () {
+          onPressed: () async {
             // Get a new image url
-            print('Get image button pressed');
+            var dogMessage = await getDogImage();
+
             setState(() {
-              imgUrl = 'something new';
+              imgUrl = dogMessage;
             });
           },
           child: const Text('Get Image'),
