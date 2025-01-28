@@ -19,7 +19,9 @@ class _RandomDogState extends State<RandomDog> {
           onPressed: () {
             // Get a new image url
             print('Get image button pressed');
-            imgUrl = 'something new';
+            setState(() {
+              imgUrl = 'something new';
+            });
           },
           child: const Text('Get Image'),
         ),
