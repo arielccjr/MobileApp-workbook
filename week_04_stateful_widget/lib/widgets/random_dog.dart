@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
 
-class RandomDog extends StatelessWidget {
-  RandomDog({super.key});
+class RandomDog extends StatefulWidget {
+  const RandomDog({super.key});
 
+  @override
+  State<RandomDog> createState() => _RandomDogState();
+}
+
+class _RandomDogState extends State<RandomDog> {
   var imgUrl = 'https://images.dog.ceo/breeds/gaddi-indian/Gaddi.jpg';
 
   @override
