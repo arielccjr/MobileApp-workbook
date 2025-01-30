@@ -11,6 +11,8 @@ class RandomDog extends StatefulWidget {
 
 class _RandomDogState extends State<RandomDog> {
   var imgUrl = '';
+  var likeCount = 0;
+  var dislikeCount = 0;
 
   Future<String> getDogImage() async {
     var dogApiUrl = 'https://dog.ceo/api/breeds/image/random';
@@ -35,17 +37,34 @@ class _RandomDogState extends State<RandomDog> {
     return Column(
       children: [
         imgUrl != '' ? Image.network(imgUrl) : const Text('Loading image...'),
+        // OPTION 1: buttons for like/dislike
+        /*
         ElevatedButton(
           onPressed: () async {
             // Get a new image url
             var dogMessage = await getDogImage();
 
             setState(() {
+              likeCount += 1;
               imgUrl = dogMessage;
             });
           },
-          child: const Text('Get Image'),
+          child: const Text('Like Image'),
         ),
+        ElevatedButton(
+          onPressed: () async {
+            // Get a new image url
+            var dogMessage = await getDogImage();
+
+            setState(() {
+              dislikeCount += 1;
+              imgUrl = dogMessage;
+            });
+          },
+          child: const Text('Dislike Image'),
+        ),
+        */
+        Text('Likes: $likeCount - Dislikes: $dislikeCount'),
       ],
     );
   }
