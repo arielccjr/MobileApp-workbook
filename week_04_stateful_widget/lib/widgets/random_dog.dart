@@ -37,8 +37,30 @@ class _RandomDogState extends State<RandomDog> {
     return Column(
       children: [
         imgUrl != ''
+            // OPTION 3: Dismissible
+            ? Dismissible(
+                key: UniqueKey(),
+                child: Image.network(imgUrl),
+                onDismissed: (direction) async {
+                  var dogMessage = await getDogImage();
+
+                  setState(() {
+                    switch (direction) {
+                      case DismissDirection.startToEnd:
+                        likeCount += 1;
+                        break;
+                      case DismissDirection.endToStart:
+                        dislikeCount += 1;
+                        break;
+                      default:
+                        break;
+                    }
+                    imgUrl = dogMessage;
+                  });
+                },
+              )
             // OPTION 2: Gestures for like/dislike
-            ? GestureDetector(
+            /* GestureDetector(
                 child: Image.network(imgUrl),
                 onTap: () async {
                   // Get a new image url
@@ -58,7 +80,7 @@ class _RandomDogState extends State<RandomDog> {
                     imgUrl = dogMessage;
                   });
                 },
-              )
+              )*/
             : const Text('Loading image...'),
         // OPTION 1: buttons for like/dislike
         /*
