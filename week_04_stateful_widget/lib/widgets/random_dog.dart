@@ -36,7 +36,30 @@ class _RandomDogState extends State<RandomDog> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        imgUrl != '' ? Image.network(imgUrl) : const Text('Loading image...'),
+        imgUrl != ''
+            // OPTION 2: Gestures for like/dislike
+            ? GestureDetector(
+                child: Image.network(imgUrl),
+                onTap: () async {
+                  // Get a new image url
+                  var dogMessage = await getDogImage();
+
+                  setState(() {
+                    likeCount += 1;
+                    imgUrl = dogMessage;
+                  });
+                },
+                onLongPress: () async {
+                  // Get a new image url
+                  var dogMessage = await getDogImage();
+
+                  setState(() {
+                    dislikeCount += 1;
+                    imgUrl = dogMessage;
+                  });
+                },
+              )
+            : const Text('Loading image...'),
         // OPTION 1: buttons for like/dislike
         /*
         ElevatedButton(
