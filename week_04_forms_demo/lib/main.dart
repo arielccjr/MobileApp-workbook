@@ -23,12 +23,20 @@ class MainApp extends StatelessWidget {
   }
 }
 
-class UserSignUpForm extends StatelessWidget {
+class UserSignUpForm extends StatefulWidget {
   const UserSignUpForm({super.key});
+
+  @override
+  State<UserSignUpForm> createState() => _UserSignUpFormState();
+}
+
+class _UserSignUpFormState extends State<UserSignUpForm> {
+  final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
     return Form(
+      key: _formKey,
       child: Column(
         children: [
           const Text('New User Form'),
@@ -41,6 +49,7 @@ class UserSignUpForm extends StatelessWidget {
             ),
           ),
           TextFormField(
+            // TODO: add password field validation
             obscureText: true,
             enableSuggestions: false,
             autocorrect: false,
@@ -58,7 +67,10 @@ class UserSignUpForm extends StatelessWidget {
               foregroundColor: Theme.of(context).colorScheme.onPrimary,
             ),
             onPressed: () {
-              // Get the text field value ... ?
+              // test validation
+              if (_formKey.currentState!.validate()) {
+                print('There were errors in the form');
+              }
             },
             child: const Text('Sign Up'),
           ),
