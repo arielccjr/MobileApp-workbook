@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:week_05_navigation_demo/pages/page_one.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});
@@ -13,7 +14,13 @@ class Home extends StatelessWidget {
         child: Column(
           children: [
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => PageOne(),
+                  ),
+                );
+              },
               child: const Text('Page One'),
             ),
             ElevatedButton(
