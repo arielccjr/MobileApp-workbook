@@ -1,8 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:week_05_navigation_demo/pages/page_one.dart';
+import 'package:week_05_navigation_demo/pages/page_two.dart';
 
-class Home extends StatelessWidget {
+class Home extends StatefulWidget {
   const Home({super.key});
+
+  @override
+  State<StatefulWidget> createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
+  String returnMessage = '';
 
   @override
   Widget build(BuildContext context) {
@@ -14,19 +22,30 @@ class Home extends StatelessWidget {
         child: Column(
           children: [
             ElevatedButton(
-              onPressed: () {
-                Navigator.of(context).push(
+              onPressed: () async {
+                final message = await Navigator.of(context).push(
                   MaterialPageRoute(
                     builder: (context) => PageOne(),
                   ),
                 );
+
+                setState(() {
+                  returnMessage = message;
+                });
               },
               child: const Text('Page One'),
             ),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => PageTwo(),
+                  ),
+                );
+              },
               child: const Text('Page Two'),
             ),
+            Text('Return msg is: $returnMessage'),
           ],
         ),
       ),
