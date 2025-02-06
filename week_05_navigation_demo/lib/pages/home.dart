@@ -26,8 +26,15 @@ class _HomeState extends State<Home> {
             ElevatedButton(
               onPressed: () async {
                 final message = await Navigator.of(context).pushNamed(
-                    PageOne.routeName,
-                    arguments: 'A special message');
+                  PageOne.routeName,
+                  arguments: 'A special message',
+                );
+
+                // final message = await Navigator.of(context).push(
+                //   MaterialPageRoute(
+                //     builder: (context) => PageOne(),
+                //   ),
+                // );
 
                 setState(() {
                   returnMessage = message as String;
@@ -38,6 +45,11 @@ class _HomeState extends State<Home> {
             ElevatedButton(
               onPressed: () {
                 Navigator.of(context).pushNamed(PageTwo.routeName);
+                // Navigator.of(context).push(
+                //   MaterialPageRoute(
+                //     builder: (context) => PageTwo(),
+                //   ),
+                // );
               },
               child: const Text('Page Two'),
             ),
