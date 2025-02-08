@@ -17,6 +17,18 @@ class _SubManagerState extends State<SubManager> {
       ),
       body: Navigator(
         initialRoute: SubPage.routeName,
+        onGenerateRoute: (settings) {
+          Widget page = const Text('DEFAULT PAGE');
+
+          switch (settings.name) {
+            case SubPage.routeName:
+              page = SubPage();
+              break;
+          }
+
+          return MaterialPageRoute(
+              builder: (context) => page, settings: settings);
+        },
       ),
     );
   }
