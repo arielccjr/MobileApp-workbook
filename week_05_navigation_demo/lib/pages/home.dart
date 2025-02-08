@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:week_05_navigation_demo/pages/page_one.dart';
 import 'package:week_05_navigation_demo/pages/page_two.dart';
+import 'package:week_05_navigation_demo/pages/sub_pages/sub.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -19,6 +20,12 @@ class _HomeState extends State<Home> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Navigation Demo'),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.of(context).pushNamed(SubPage.routeName);
+        },
+        child: const Icon(Icons.navigation),
       ),
       body: Center(
         child: Column(

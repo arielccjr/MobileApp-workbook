@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 class SubPage extends StatelessWidget {
   const SubPage({super.key});
 
+  static const routeName = 'sub_page';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

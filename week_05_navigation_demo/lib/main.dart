@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:week_05_navigation_demo/pages/home.dart';
 import 'package:week_05_navigation_demo/pages/page_one.dart';
 import 'package:week_05_navigation_demo/pages/page_two.dart';
+import 'package:week_05_navigation_demo/pages/sub_pages/sub.dart';
 
 void main() {
   runApp(const MainApp());
@@ -31,6 +32,8 @@ class MainApp extends StatelessWidget {
           case PageTwo.routeName:
             page = MaterialPageRoute(builder: (context) => const PageTwo());
             break;
+          case SubPage.routeName:
+            page = MaterialPageRoute(builder: (context) => const SubPage());
         }
 
         return page;
