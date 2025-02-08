@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:week_05_navigation_demo/pages/sub_pages/sub1.dart';
+import 'package:week_05_navigation_demo/pages/sub_pages/sub2.dart';
 
 class SubPage extends StatelessWidget {
   const SubPage({super.key});
@@ -13,11 +15,15 @@ class SubPage extends StatelessWidget {
           children: [
             const Text('Main Sub Page'),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.of(context).pushNamed(SubPage1.routeName);
+              },
               child: const Text('Sub 1'),
             ),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.of(context).pushNamed(SubPage2.routeName);
+              },
               child: const Text('Sub 2'),
             ),
           ],
