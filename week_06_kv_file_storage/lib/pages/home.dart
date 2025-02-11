@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:week_06_kv_file_storage/pages/shared_prefs.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});
@@ -13,12 +14,12 @@ class Home extends StatelessWidget {
         child: Column(
           children: [
             ElevatedButton(
-              onPressed: () async {
-                // final message = await Navigator.of(context).push(
-                //   MaterialPageRoute(
-                //     builder: (context) => PageOne(),
-                //   ),
-                // );
+              onPressed: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => SharedPrefs(),
+                  ),
+                );
               },
               child: const Text('Shared Prefs'),
             ),
