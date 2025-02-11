@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:week_06_kv_file_storage/pages/file_storage.dart';
 import 'package:week_06_kv_file_storage/pages/shared_prefs.dart';
 
 class Home extends StatelessWidget {
@@ -25,11 +26,11 @@ class Home extends StatelessWidget {
             ),
             ElevatedButton(
               onPressed: () {
-                // Navigator.of(context).push(
-                //   MaterialPageRoute(
-                //     builder: (context) => PageTwo(),
-                //   ),
-                // );
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => FileStorage(),
+                  ),
+                );
               },
               child: const Text('File Storage'),
             ),
