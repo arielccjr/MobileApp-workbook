@@ -7,7 +7,7 @@ Future<Database> getDatabase() async {
   var databasePath = await getDatabasesPath();
 
   return openDatabase(
-    join(databasePath, databasePath),
+    join(databasePath, databaseName),
     version: 1,
     onCreate: (db, version) async {
       // When the database is created, creat the todos table
