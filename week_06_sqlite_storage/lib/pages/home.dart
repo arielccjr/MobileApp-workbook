@@ -15,8 +15,27 @@ class _HomeState extends State<Home> {
   late TodoController _controller;
 
   @override
+  void initState() {
+    _controller = TodoController.instance;
+    // Fetch the todos
+    _fetchTodos();
+    super.initState();
+  }
+
+  Future<void> _fetchTodos() async {
+    final todos = await _controller.getTodos();
+    setState(() {
+      _todos = todos;
+      _counter = todos.length;
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
-    // TODO: implement build
-    throw UnimplementedError();
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Todos App'),
+      ),
+    );
   }
 }
