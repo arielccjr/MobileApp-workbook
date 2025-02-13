@@ -37,6 +37,11 @@ class TodoController {
     );
   }
 
+  Future<void> deleteAll() async {
+    final db = await database;
+    await db.delete(tableName);
+  }
+
   Future<List<Todo>> getTodos() async {
     final db = await database;
     final List<Map<String, dynamic>> maps = await db.query(tableName);

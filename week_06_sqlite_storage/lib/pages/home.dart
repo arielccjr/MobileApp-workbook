@@ -57,7 +57,41 @@ class _HomeState extends State<Home> {
           children: [
             _todos.isEmpty
                 ? const Text('No todos')
-                : Text('Found $_counter todos')
+                : Expanded(
+                    child: ListView.builder(
+                      scrollDirection: Axis.vertical,
+                      itemCount: _todos.length,
+                      itemBuilder: (context, index) {
+                        return ListTile(
+                          title: Text(
+                            _todos[index].description,
+                            style: TextStyle(
+                                decoration: _todos[index].done
+                                    ? TextDecoration.lineThrough
+                                    : TextDecoration.none),
+                          ),
+                          trailing: Checkbox(
+                            value: _todos[index].done,
+                            onChanged: (value) async {
+                              setState(() {
+                                _todos[index].done = value!;
+                                _controller.update(_todos[index]);
+                              });
+                            },
+                          ),
+                        );
+                      },
+                    ),
+                  ),
+            if (_todos.isNotEmpty)
+              ElevatedButton(
+                onPressed: () async {
+                  await _controller.deleteAll();
+                  _fetchTodos();
+                },
+                child: const Text('Delete All'),
+              ),
+            const SizedBox(height: 96.0),
           ],
         ),
       ),
