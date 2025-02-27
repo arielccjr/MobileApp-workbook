@@ -6,10 +6,21 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Firebase Auth Demo'),
+      appBar: AppBar(title: const Text('Firebase Auth Demo')),
+      body: ListenableBuilder(
+        listenable: authAppState,
+        builder: (context, child) {
+          return authAppState.loggedIn
+              ? ElevatedButton(
+                onPressed: () => Navigator.of(context).pushNamed('/profile'),
+                child: const Text('Profile'),
+              )
+              : ElevatedButton(
+                onPressed: () => Navigator.of(context).pushNamed('/sign-in'),
+                child: const Text('Sign In'),
+              );
+        },
       ),
-      body: const Text('The page body'),
     );
   }
 }
