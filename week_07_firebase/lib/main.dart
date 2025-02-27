@@ -1,23 +1,26 @@
 import 'package:flutter/material.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_ui_auth/firebase_ui_auth.dart';
+import 'package:week_07_firebase/app_state.dart';
 import 'package:week_07_firebase/pages/home_page.dart';
-import 'firebase_options.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  runApp(const MainApp());
+  ApplicationState appState = ApplicationState();
+
+  runApp(MainApp(authAppState: appState));
 }
 
 class MainApp extends StatelessWidget {
-  const MainApp({super.key});
+  const MainApp({required this.authAppState, super.key});
+
+  final ApplicationState authAppState;
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       routes: {
-        '/': (context) => HomePage(),
+        '/': (context) => HomePage(authAppState: authAppState),
         '/sign-in': (context) {
           return SignInScreen(
             actions: [

@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:week_07_firebase/app_state.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+  const HomePage({required this.authAppState, super.key});
+
+  final ApplicationState authAppState;
 
   @override
   Widget build(BuildContext context) {
