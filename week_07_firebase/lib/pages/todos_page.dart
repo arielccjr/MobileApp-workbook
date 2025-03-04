@@ -70,7 +70,7 @@ class _TodosPageState extends State<TodosPage> {
                           onChanged: (value) async {
                             setState(() {
                               _todos[index].done = value!;
-                              // _controller.update(_todos[index]);
+                              _controller.update(_todos[index]);
                             });
                           },
                         ),

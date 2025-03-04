@@ -28,15 +28,20 @@ class TodoController {
   //   );
   // }
 
-  // Future<void> update(Todo todo) async {
-  //   final db = await database;
-  //   await db.update(
-  //     tableName,
-  //     todo.toMap(),
-  //     where: 'id = ?',
-  //     whereArgs: [todo.id],
-  //   );
-  // }
+  Future<void> update(Todo todo) async {
+    // User must be logged in
+    User? user = FirebaseAuth.instance.currentUser;
+    if (user == null) {
+      throw StateError('Cannot update todo when user is null');
+    }
+
+    final db = await database;
+
+    await db
+        .collection('/$tableName/${user.uid}/$tableName')
+        .doc(todo.id)
+        .update(todo.toMap());
+  }
 
   // Future<void> deleteAll() async {
   //   final db = await database;
@@ -52,7 +57,8 @@ class TodoController {
 
     final db = await database;
 
-    final snapshot = await db.collection('/$tableName/${user.uid}/todos').get();
+    final snapshot =
+        await db.collection('/$tableName/${user.uid}/$tableName').get();
 
     final todos =
         snapshot.docs.map((doc) {
