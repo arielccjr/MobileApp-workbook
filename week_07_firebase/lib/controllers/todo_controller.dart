@@ -52,7 +52,7 @@ class TodoController {
 
     final db = await database;
 
-    final snapshot = await db.collection(tableName).get();
+    final snapshot = await db.collection('/$tableName/${user.uid}/todos').get();
 
     final todos =
         snapshot.docs.map((doc) {
