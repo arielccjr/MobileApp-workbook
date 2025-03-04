@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_ui_auth/firebase_ui_auth.dart';
 import 'package:week_07_firebase/app_state.dart';
 import 'package:week_07_firebase/pages/home_page.dart';
+import 'package:week_07_firebase/pages/todos_page.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -57,6 +58,9 @@ class MainApp extends StatelessWidget {
               }),
             ],
           );
+        },
+        '/todos': (context) {
+          return TodosPage();
         },
       },
     );
