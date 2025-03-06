@@ -22,7 +22,7 @@ class HomePage extends StatelessWidget {
               onPressed:
                   () => Navigator.of(context).push(
                     MaterialPageRoute(
-                      builder: (context) => const FirstNamePage(),
+                      builder: (context) => FirstNamePage(user: user),
                     ),
                   ),
               child: const Text('First Name Page'),
@@ -32,7 +32,7 @@ class HomePage extends StatelessWidget {
               onPressed:
                   () => Navigator.of(context).push(
                     MaterialPageRoute(
-                      builder: (context) => const LastNamePage(),
+                      builder: (context) => LastNamePage(user: user),
                     ),
                   ),
               child: const Text('Last Name Page'),
