@@ -1,14 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:week_08_state_management/models/user.dart';
-
 import 'first_name_page.dart';
 import 'last_name_page.dart';
 
 class HomePage extends StatelessWidget {
-  HomePage({super.key}) : user = User('Jane', 'Doe');
-
-  // App state
-  final User user;
+  const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -21,9 +16,7 @@ class HomePage extends StatelessWidget {
             ElevatedButton(
               onPressed:
                   () => Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (context) => FirstNamePage(user: user),
-                    ),
+                    MaterialPageRoute(builder: (context) => FirstNamePage()),
                   ),
               child: const Text('First Name Page'),
             ),
@@ -31,9 +24,7 @@ class HomePage extends StatelessWidget {
             ElevatedButton(
               onPressed:
                   () => Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (context) => LastNamePage(user: user),
-                    ),
+                    MaterialPageRoute(builder: (context) => LastNamePage()),
                   ),
               child: const Text('Last Name Page'),
             ),
