@@ -1,27 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:week_08_state_management/models/user.dart';
-import 'package:week_08_state_management/user_notifier.dart';
 
 import 'pages/home_page.dart';
 
 void main() {
-  runApp(const MainApp());
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) => User('Sally', 'Anne'),
+      child: const MainApp(),
+    ),
+  );
 }
-
-User user = User('Jon', 'Doe');
 
 class MainApp extends StatelessWidget {
   const MainApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return UserNotifier(
-      user: user,
-      child: Builder(
-        builder: (BuildContext context) {
-          return MaterialApp(home: Scaffold(body: Center(child: HomePage())));
-        },
-      ),
-    );
+    return const MaterialApp(home: Scaffold(body: Center(child: HomePage())));
   }
 }
