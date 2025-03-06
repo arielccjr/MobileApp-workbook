@@ -8,4 +8,8 @@ class Todo {
   Map<String, dynamic> toMap() {
     return {if (id != null) 'id': id, 'description': description, 'done': done};
   }
+
+  Map<String, dynamic> toFirestore() {
+    return {'description': description, 'done': done};
+  }
 }

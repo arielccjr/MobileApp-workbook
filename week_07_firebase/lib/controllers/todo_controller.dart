@@ -24,7 +24,7 @@ class TodoController {
   //   final db = await database;
   //   await db.insert(
   //     tableName,
-  //     todo.toMap(),
+  //     todo.toFirestore(),
   //   );
   // }
 
@@ -40,7 +40,7 @@ class TodoController {
     await db
         .collection('/$tableName/${user.uid}/$tableName')
         .doc(todo.id)
-        .update(todo.toMap());
+        .update(todo.toFirestore());
   }
 
   // Future<void> deleteAll() async {
