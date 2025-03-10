@@ -32,6 +32,14 @@ class HomePage extends StatelessWidget {
                 },
                 child: const Text('Transforms Page'),
               ),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => TransformsPage()),
+                  );
+                },
+                child: const Text('Animations Page'),
+              ),
             ],
           ),
         ),
