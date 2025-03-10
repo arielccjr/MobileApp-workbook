@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:week_09_animation_basics/transforms.dart';
 
 void main() {
   runApp(const MainApp());
@@ -18,6 +19,23 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: Center(child: Text('Hello World!')));
+    return Scaffold(
+      body: SafeArea(
+        child: Center(
+          child: Column(
+            children: [
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => TransformsPage()),
+                  );
+                },
+                child: const Text('Transforms Page'),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }
