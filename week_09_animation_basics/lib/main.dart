@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:week_09_animation_basics/animations.dart';
 import 'package:week_09_animation_basics/transforms.dart';
 
 void main() {
@@ -35,7 +36,7 @@ class HomePage extends StatelessWidget {
               ElevatedButton(
                 onPressed: () {
                   Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => TransformsPage()),
+                    MaterialPageRoute(builder: (context) => AnimationsPage()),
                   );
                 },
                 child: const Text('Animations Page'),
