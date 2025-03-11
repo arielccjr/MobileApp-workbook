@@ -12,6 +12,7 @@ class AnimationsPage extends StatefulWidget {
 class _AnimationsPageState extends State<AnimationsPage>
     with SingleTickerProviderStateMixin {
   late final AnimationController _controller;
+  var x = 0.0;
 
   @override
   void initState() {
@@ -36,7 +37,23 @@ class _AnimationsPageState extends State<AnimationsPage>
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [const Text('Animation Text')],
+          children: [
+            AnimatedBuilder(
+              animation: _controller,
+              builder: (context, child) {
+                return Transform.translate(
+                  offset: Offset(
+                    _controller.value < 0.5 ? (x += 2) : (x -= 2),
+                    0.0,
+                  ),
+                  child: Transform.rotate(
+                    angle: _controller.value * (math.pi * 2),
+                    child: const Text('Animation Text'),
+                  ),
+                );
+              },
+            ),
+          ],
         ),
       ),
     );
