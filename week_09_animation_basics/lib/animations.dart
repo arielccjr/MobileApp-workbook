@@ -48,10 +48,18 @@ class _AnimationsPageState extends State<AnimationsPage>
                   ),
                   child: Transform.rotate(
                     angle: _controller.value * (math.pi * 2),
-                    child: const Text('Animation Text'),
+                    child: const Text('Explicit Animation'),
                   ),
                 );
               },
+            ),
+            RotationTransition(
+              //turns: _controller,
+              turns: CurvedAnimation(
+                parent: _controller,
+                curve: Curves.easeInOut,
+              ),
+              child: const Text('Implicit Animation'),
             ),
           ],
         ),
