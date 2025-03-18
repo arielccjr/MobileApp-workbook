@@ -9,7 +9,7 @@ class UserWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      children: [Text('Name: ${user.name}'), Text('Email: ${user.email}')],
+      children: [Text('Name: ${user.name}'), Text('Mail: ${user.email}')],
     );
   }
 }
