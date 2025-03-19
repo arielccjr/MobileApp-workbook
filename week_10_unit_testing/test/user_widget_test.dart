@@ -12,22 +12,27 @@ main() {
 
     setUp(() {
       user = const User(name: name, email: email);
-      app = MaterialApp(home: Scaffold(body: UserWidget(user: user)));
+      app = MaterialApp(home: UserWidget(user: user));
     });
 
-    testWidgets('UserWidget displays name', (WidgetTester tester) async {
+    testWidgets('UserWidget displays name and email', (
+      WidgetTester tester,
+    ) async {
       await tester.pumpWidget(app);
 
       final nameFinder = find.text('Name: $name');
+      final emailFinder = find.text('Mail: $email');
+      final fabFinder = find.byType(FloatingActionButton);
+
+      expect(nameFinder, findsNothing);
+      expect(emailFinder, findsNothing);
+      // expect(fabFinder, findsOneWidget);
+
+      await tester.tap(fabFinder);
+
+      await tester.pump(const Duration(seconds: 1));
 
       expect(nameFinder, findsOneWidget);
-    });
-
-    testWidgets('UserWidget displays email', (WidgetTester tester) async {
-      await tester.pumpWidget(app);
-
-      final emailFinder = find.text('Mail: $email');
-
       expect(emailFinder, findsOneWidget);
     });
   });
